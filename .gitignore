@@ -1,3 +1,6 @@
+.env
+*.dereffed.json
+
 # Logs
 logs
 *.log

@@ -1,0 +1,264 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://schema.kickstartds.com/tokens/brand.schema.json",
+  "title": "kickstartDS Branding Design Tokens",
+  "type": "object",
+  "properties": {
+    "color": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "bg": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "fg": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "link": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "positive": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "negative": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "informative": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "notice": {
+          "$ref": "#/definitions/colorPair"
+        },
+        "scale": {
+          "type": "object",
+          "properties": {
+            "1": {
+              "$ref": "#/definitions/fraction"
+            },
+            "2": {
+              "$ref": "#/definitions/fraction"
+            },
+            "3": {
+              "$ref": "#/definitions/fraction"
+            },
+            "4": {
+              "$ref": "#/definitions/fraction"
+            },
+            "5": {
+              "$ref": "#/definitions/fraction"
+            },
+            "6": {
+              "$ref": "#/definitions/fraction"
+            },
+            "7": {
+              "$ref": "#/definitions/fraction"
+            },
+            "8": {
+              "$ref": "#/definitions/fraction"
+            },
+            "9": {
+              "$ref": "#/definitions/fraction"
+            }
+          }
+        }
+      }
+    },
+    "font": {
+      "type": "object",
+      "properties": {
+        "family": {
+          "type": "object",
+          "properties": {
+            "display": {
+              "$ref": "#/definitions/fontFamily"
+            },
+            "copy": {
+              "$ref": "#/definitions/fontFamily"
+            },
+            "interface": {
+              "$ref": "#/definitions/fontFamily"
+            },
+            "mono": {
+              "$ref": "#/definitions/fontFamily"
+            }
+          }
+        },
+        "weight": {
+          "type": "object",
+          "properties": {
+            "light": {
+              "$ref": "#/definitions/fontWeight"
+            },
+            "regular": {
+              "$ref": "#/definitions/fontWeight"
+            },
+            "medium": {
+              "$ref": "#/definitions/fontWeight"
+            },
+            "semi-bold": {
+              "$ref": "#/definitions/fontWeight"
+            },
+            "bold": {
+              "$ref": "#/definitions/fontWeight"
+            }
+          }
+        },
+        "size": {
+          "type": "object",
+          "properties": {
+            "display": {
+              "$ref": "#/definitions/size"
+            },
+            "copy": {
+              "$ref": "#/definitions/size"
+            },
+            "interface": {
+              "$ref": "#/definitions/size"
+            },
+            "mono": {
+              "$ref": "#/definitions/size"
+            }
+          }
+        }
+      }
+    },
+    "spacing": {
+      "$ref": "#/definitions/size"
+    }
+  },
+  "definitions": {
+    "color": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "const": "color"
+        },
+        "$value": {
+          "type": "object",
+          "properties": {
+            "colorSpace": {
+              "const": "srgb"
+            },
+            "components": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "colorPair": {
+      "type": "object",
+      "properties": {
+        "$root": {
+          "$ref": "#/definitions/color"
+        },
+        "inverted": {
+          "$ref": "#/definitions/color"
+        }
+      }
+    },
+    "fraction": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "const": "number"
+        },
+        "$value": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0
+        }
+      }
+    },
+    "fontFamily": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "const": "fontFamily"
+        },
+        "$value": {
+          "type": "array",
+          "item": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fontWeight": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "const": "fontWeight"
+        },
+        "$value": {
+          "type": "integer"
+        }
+      }
+    },
+    "size": {
+      "type": "object",
+      "properties": {
+        "base": {
+          "type": "object",
+          "properties": {
+            "$type": {
+              "const": "dimension"
+            },
+            "$value": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string",
+                  "const": "px"
+                }
+              }
+            }
+          }
+        },
+        "shrink-factor": {
+          "$ref": "#/definitions/number"
+        },
+        "grow-factor": {
+          "$ref": "#/definitions/number"
+        },
+        "bp-factor": {
+          "$ref": "#/definitions/number"
+        }
+      }
+    },
+    "number": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "const": "number"
+        },
+        "$value": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
