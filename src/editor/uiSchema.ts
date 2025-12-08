@@ -121,4 +121,7 @@ export const uischema = {
       ],
     },
   ],
+  options: {
+    searchParam: "cat",
+  },
 };

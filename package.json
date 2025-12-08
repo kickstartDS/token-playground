@@ -17,7 +17,12 @@
     "@jsonforms/core": "^3.7.0",
     "@jsonforms/material-renderers": "^3.7.0",
     "@jsonforms/react": "^3.7.0",
-    "@kickstartds/base": "^2.0.3",
+    "@kickstartds/base": "^4.0.2",
+    "@kickstartds/blog": "^4.0.2",
+    "@kickstartds/content": "^4.1.1",
+    "@kickstartds/core": "^4.0.2",
+    "@kickstartds/ds-agency-premium": "1.6.72--canary.43.2525.0",
+    "@kickstartds/form": "^4.0.2",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
     "@mui/x-date-pickers": "^8.19.0",
@@ -35,7 +40,7 @@
     "@types/traverse": "^0.6.37",
     "@vitejs/plugin-react": "^3.1.0",
     "netlify-cli": "^12.10.0",
-    "typescript": "^4.9.3",
+    "typescript": "^5.9.3",
     "vite": "^4.1.0"
   }
 }

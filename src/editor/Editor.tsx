@@ -9,6 +9,7 @@ import * as numberRenderer from "../controls/numberRenderer";
 import * as fontFamilyRenderer from "../controls/fontFamilyRenderer";
 import * as dimensionRenderer from "../controls/dimensionRenderer";
 import * as fontWeightRenderer from "../controls/fontWeightRenderer";
+import * as categorizationLayout from "../controls/categorizationLayout";
 import { useToken } from "../token/TokenContext";
 import tokenSchema from "../tokens.schema.dereffed.json";
 import { uischema } from "./uiSchema";
@@ -62,6 +63,7 @@ export const Editor = () => {
           fontFamilyRenderer,
           dimensionRenderer,
           fontWeightRenderer,
+          categorizationLayout,
         ]}
         cells={materialCells}
         onChange={({ data }) => {

@@ -7,6 +7,7 @@ import { Preview } from "./preview/Preview";
 import { Editor } from "./editor/Editor";
 import { TokenContextProvider } from "./token/TokenContext";
 import { useMatchMediaQuery } from "./utils/useMatchMediaQuery";
+import { SearchParamsProvider } from "./utils/router";
 import "./App.scss";
 
 export const App = () => {
@@ -15,38 +16,44 @@ export const App = () => {
 
   return (
     <main className="content">
-      <TokenContextProvider>
-        <Box
-          className={classNames(
-            "content__pane content__editor-pane",
-            !showEditor && "content__editor-pane--hidden"
-          )}
-          sx={{
-            borderRight: 1,
-            borderColor: "grey.500",
-          }}
-        >
-          <Editor />
-        </Box>
-        <div
-          className={classNames(
-            "content__pane content__preview-pane",
-            !isLargeScreen && showEditor && "content__preview-pane--shrunk"
-          )}
-        >
-          <ToggleButtonGroup className="content__editor-toggle">
-            <ToggleButton
-              value="show"
-              onClick={() => setShowEditor((prev) => !prev)}
-              aria-label={(showEditor ? "hide" : "show") + " editor"}
-              title={(showEditor ? "hide" : "show") + " editor"}
-            >
-              {showEditor ? <DoubleArrowLeftIcon /> : <DoubleArrowRightIcon />}
-            </ToggleButton>
-          </ToggleButtonGroup>
-          <Preview />
-        </div>
-      </TokenContextProvider>
+      <SearchParamsProvider>
+        <TokenContextProvider>
+          <Box
+            className={classNames(
+              "content__pane content__editor-pane",
+              !showEditor && "content__editor-pane--hidden"
+            )}
+            sx={{
+              borderRight: 1,
+              borderColor: "grey.500",
+            }}
+          >
+            <Editor />
+          </Box>
+          <div
+            className={classNames(
+              "content__pane content__preview-pane",
+              !isLargeScreen && showEditor && "content__preview-pane--shrunk"
+            )}
+          >
+            <ToggleButtonGroup className="content__editor-toggle">
+              <ToggleButton
+                value="show"
+                onClick={() => setShowEditor((prev) => !prev)}
+                aria-label={(showEditor ? "hide" : "show") + " editor"}
+                title={(showEditor ? "hide" : "show") + " editor"}
+              >
+                {showEditor ? (
+                  <DoubleArrowLeftIcon />
+                ) : (
+                  <DoubleArrowRightIcon />
+                )}
+              </ToggleButton>
+            </ToggleButtonGroup>
+            <Preview />
+          </div>
+        </TokenContextProvider>
+      </SearchParamsProvider>
     </main>
   );
 };
