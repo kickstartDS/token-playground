@@ -23,7 +23,9 @@
   THE SOFTWARE.
 */
 import { useState, useMemo, useEffect } from "react";
-import { AppBar, Tab, Tabs } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 import {
   and,
   Categorization,

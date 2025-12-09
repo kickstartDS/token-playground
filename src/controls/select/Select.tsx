@@ -1,10 +1,8 @@
 import { FC, ReactNode, useId } from "react";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select as MuiSelect,
-} from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import MuiSelect from "@mui/material/Select";
 
 export const Select: FC<{
   value: string;
@@ -13,7 +11,7 @@ export const Select: FC<{
   placeholder?: ReactNode;
   label?: string;
 }> = ({ value, onChange, options, label }) => {
-  const id = useId()
+  const id = useId();
   return (
     <FormControl size="small">
       <InputLabel id={id}>{label}</InputLabel>

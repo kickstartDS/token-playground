@@ -1,6 +1,8 @@
 import { useState } from "react";
 import classNames from "classnames";
-import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import Box from "@mui/material/Box";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import ToggleButton from "@mui/material/ToggleButton";
 import DoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import DoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import { Preview } from "./preview/Preview";

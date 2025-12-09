@@ -1,4 +1,6 @@
 import { ComponentProps } from "react";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import { rankWith, ControlProps, scopeEndIs } from "@jsonforms/core";
 import {
   MaterialInputControl,
@@ -7,7 +9,6 @@ import {
 } from "@jsonforms/material-renderers";
 import { withJsonFormsControlProps } from "@jsonforms/react";
 import tinycolor from "tinycolor2";
-import { Box, Stack } from "@mui/material";
 
 const { MaterialTextControl } = Unwrapped;
 

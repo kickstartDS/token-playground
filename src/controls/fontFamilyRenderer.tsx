@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import Autocomplete from "@mui/material/Autocomplete";
+import TextField from "@mui/material/TextField";
+import FormHelperText from "@mui/material/FormHelperText";
 import {
   isDescriptionHidden,
   rankWith,
@@ -9,7 +12,6 @@ import {
   withJsonFormsControlProps,
   withTranslateProps,
 } from "@jsonforms/react";
-import { Autocomplete, FormHelperText, TextField } from "@mui/material";
 import fontList from "../fonts.json";
 
 const fonts = new Set(fontList);

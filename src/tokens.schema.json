@@ -161,7 +161,11 @@
                 }
               ]
             }
-          }
+          },
+          "required": [
+            "colorSpace",
+            "components"
+          ]
         }
       }
     },
@@ -185,9 +189,13 @@
         "$value": {
           "type": "number",
           "minimum": 0,
-          "maximum": 0
+          "maximum": 1
         }
-      }
+      },
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "fontFamily": {
       "type": "object",
@@ -201,7 +209,11 @@
             "type": "string"
           }
         }
-      }
+      },
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "fontWeight": {
       "type": "object",
@@ -212,7 +224,11 @@
         "$value": {
           "type": "integer"
         }
-      }
+      },
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "size": {
       "type": "object",
@@ -235,7 +251,11 @@
                 }
               }
             }
-          }
+          },
+          "required": [
+            "$type",
+            "$value"
+          ]
         },
         "shrink-factor": {
           "$ref": "#/definitions/number"
@@ -258,7 +278,11 @@
           "type": "number",
           "minimum": 0
         }
-      }
+      },
+      "required": [
+        "$type",
+        "$value"
+      ]
     }
   }
 }

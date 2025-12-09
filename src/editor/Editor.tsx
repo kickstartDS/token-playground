@@ -3,7 +3,7 @@ import {
   materialCells,
   materialRenderers,
 } from "@jsonforms/material-renderers";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import * as colorRenderer from "../controls/colorRenderer";
 import * as numberRenderer from "../controls/numberRenderer";
 import * as fontFamilyRenderer from "../controls/fontFamilyRenderer";

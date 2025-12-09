@@ -51,25 +51,33 @@ window.addEventListener(
   }
 );
 
-const categoryDemos: Record<string, LazyExoticComponent<FunctionComponent>> = {
-  "0": lazy(
+const pages: Record<string, LazyExoticComponent<FunctionComponent>> = {
+  "color-demo": lazy(
     () => import("@kickstartds/ds-agency-premium/playground/color-demo")
   ),
-  "1": lazy(
+  "font-demo": lazy(
     () => import("@kickstartds/ds-agency-premium/playground/font-demo")
   ),
-  "2": lazy(
+  "spacing-demo": lazy(
     () => import("@kickstartds/ds-agency-premium/playground/spacing-demo")
   ),
+  landingpage: lazy(
+    () => import("@kickstartds/ds-agency-premium/pages/landingpage")
+  ),
+  about: lazy(() => import("@kickstartds/ds-agency-premium/pages/about")),
+  jobs: lazy(() => import("@kickstartds/ds-agency-premium/pages/jobs")),
+  "jobs-detail": lazy(
+    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail")
+  ),
+  overview: lazy(() => import("@kickstartds/ds-agency-premium/pages/overview")),
 };
 
 const Demo = () => {
-  const [category, setCategory] = useState("0");
-  const DemoComponent = useMemo(() => categoryDemos[category], [category]);
+  const [category, setCategory] = useState("color-demo");
+  const DemoComponent = useMemo(() => pages[category], [category]);
   const handler = useCallback(() => {
     const hash = location.hash.slice(2);
-    const params = new URLSearchParams(hash);
-    setCategory(params.get("cat") || "0");
+    if (hash) setCategory(hash);
   }, []);
 
   useEffect(() => {
