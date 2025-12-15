@@ -10,6 +10,8 @@ import {
 import { tokensToCss } from "./tokensToCss";
 import { initialTokens } from "./initialTokens";
 import { useLocalStorage } from "../utils/useLocalStorage";
+import { useGetTokens } from "./fetcher";
+import { useSearchParams } from "../utils/router";
 
 export interface ITokenContext {
   setTokens: Dispatch<SetStateAction<any>>;
@@ -24,7 +26,10 @@ const TokenContext = createContext<ITokenContext>({
 });
 
 export const TokenContextProvider: FC<PropsWithChildren> = (props) => {
-  const [tokens, setTokens] = useLocalStorage("tokens", initialTokens);
+  const [tokens, setTokens] = useLocalStorage<object>("tokens", initialTokens);
+  const searchParams = useSearchParams();
+  const tokenParam = searchParams.get("t");
+  const query = useGetTokens(tokenParam, setTokens);
 
   useEffect(() => {
     localStorage.setItem("css", tokensToCss(tokens));
@@ -37,7 +42,7 @@ export const TokenContextProvider: FC<PropsWithChildren> = (props) => {
         tokens,
         setTokens,
         resetTokens() {
-          setTokens(initialTokens);
+          setTokens(query.data || initialTokens);
         },
       }}
     />

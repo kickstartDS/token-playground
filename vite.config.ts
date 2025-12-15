@@ -1,10 +1,18 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import netlify from "@netlify/vite-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    netlify({
+      functions: { enabled: true },
+      blobs: { enabled: true },
+      edgeFunctions: { enabled: false },
+    }),
+  ],
   build: {
     rollupOptions: {
       input: {
@@ -15,7 +23,6 @@ export default defineConfig({
   },
   publicDir: "node_modules/@kickstartds/ds-agency-premium/dist/static",
   server: {
-    host: true,
-    port: 5173
-  }
+    port: 5173,
+  },
 });
