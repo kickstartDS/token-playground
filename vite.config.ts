@@ -14,4 +14,8 @@ export default defineConfig({
     },
   },
   publicDir: "node_modules/@kickstartds/ds-agency-premium/dist/static",
+  server: {
+    host: true,
+    port: 5173
+  }
 });

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc && rm -rf dist && vite build",
     "deploy": "netlify deploy --alias=next --dir=dist",
-    "prepare": "npx patch-package && yarn schema",
+    "prepare": "pnpm schema",
     "preview": "vite preview",
     "schema": "node scripts/schema",
     "start": "vite"
@@ -40,7 +40,7 @@
     "@types/traverse": "^0.6.37",
     "@vitejs/plugin-react": "^5.1.2",
     "netlify-cli": "^23.12.3",
-    "patch-package": "^8.0.1",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3",
     "vite": "^7.2.7"
   }

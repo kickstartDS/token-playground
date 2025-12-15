@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "pnpm",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "source=global-pnpm-store,target=${containerWorkspaceFolder}/.pnpm-store,type=volume",
+    "source=global-pnpm-cache,target=/root/.cache/pnpm,type=volume"
+  ],
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {}
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [5173],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "pnpm install",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "[typescript]": {
+          "editor.defaultFormatter": "prettier.prettier-vscode"
+        },
+        "editor.formatOnSave": true
+      },
+      "extensions": ["editorconfig.editorconfig", "prettier.prettier-vscode"]
+    }
+  }
+}
