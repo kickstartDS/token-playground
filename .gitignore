@@ -1,5 +1,6 @@
 .env
-*.dereffed.json
+*.schema.dereffed.json
+*.schema.validate.js
 
 # Logs
 logs

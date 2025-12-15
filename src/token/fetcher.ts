@@ -24,8 +24,10 @@ const getTokens: QueryFunction<any, [path: string, name: string]> = async ({
 const getMutation = (name: string) => fetchTokens(name);
 const postTokens =
   (method: "POST" | "PUT") =>
-  ({ name, tokens }: { name: string; tokens: any }) =>
-    fetchTokens(name, method, tokens);
+  ({ name, tokens }: { name: string; tokens: any }) => {
+    const { _fontHref, ...rest } = tokens;
+    return fetchTokens(name, method, rest);
+  };
 
 export const useGetTokens = (
   name: string | null,

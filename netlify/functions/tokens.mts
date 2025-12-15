@@ -1,6 +1,8 @@
 import type { Context, Config } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
 
+import { validate } from "../../src/tokens.schema.validate";
+
 const STORE_NAME = "tokens";
 
 const res = (status: number, body?: object | string) => {
@@ -43,9 +45,19 @@ export default async (req: Request, context: Context) => {
 
       case "POST":
       case "PUT":
-        const body = await req.json();
-        if (!body) {
-          return res(400, "Missing Body");
+        let body;
+        try {
+          body = await req.json();
+        } catch (e) {
+          return res(
+            422,
+            e instanceof Error ? e.message : "Missing or Invalid Data",
+          );
+        }
+        if (!validate(body)) {
+          // @ts-expect-error
+          console.error(validate.errors);
+          return res(422, "Invalid Data");
         }
         await store.setJSON(context.params.token, body);
 
