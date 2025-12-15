@@ -8,7 +8,7 @@ import {
   Unwrapped,
 } from "@jsonforms/material-renderers";
 import { withJsonFormsControlProps } from "@jsonforms/react";
-import tinycolor from "tinycolor2";
+import tinycolor, { type ColorInput } from "tinycolor2";
 
 const { MaterialTextControl } = Unwrapped;
 
@@ -18,8 +18,8 @@ const round = (value: number, digits = 4) => {
   value = value / Math.pow(10, digits);
   return value;
 };
-export const hex2colorToken = (hex: string) => {
-  const { r, g, b } = tinycolor(hex).toRgb();
+export const color2token = (color: ColorInput) => {
+  const { r, g, b } = tinycolor(color).toRgb();
   return {
     $type: "color",
     $value: {
@@ -52,7 +52,7 @@ export const renderer = withJsonFormsControlProps((props: ControlProps) => {
         <MaterialTextControl
           {...props}
           data={token2hex(props.data)}
-          handleChange={(p, v) => props.handleChange(p, hex2colorToken(v))}
+          handleChange={(p, v) => props.handleChange(p, color2token(v))}
         />
       </Box>
       <Box
@@ -67,7 +67,7 @@ export const renderer = withJsonFormsControlProps((props: ControlProps) => {
           label=""
           input={ColorInput}
           data={token2hex(props.data)}
-          handleChange={(p, v) => props.handleChange(p, hex2colorToken(v))}
+          handleChange={(p, v) => props.handleChange(p, color2token(v))}
         />
       </Box>
     </Stack>

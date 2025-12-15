@@ -11,6 +11,6 @@ for await (const schemaPath of fs.glob("src/**/*.schema.json")) {
 
   await fs.writeFile(
     path.join(dir, name + ".dereffed" + ext),
-    JSON.stringify(schema, null, 2)
+    JSON.stringify(schema, null, 2),
   );
 }

@@ -13,6 +13,7 @@ import * as categorizationLayout from "../controls/categorizationLayout";
 import { useToken } from "../token/TokenContext";
 import tokenSchema from "../tokens.schema.dereffed.json";
 import { uischema } from "./uiSchema";
+import { EditorToolbar } from "./Toolbar";
 
 const schema = {
   type: "object",
@@ -51,25 +52,28 @@ const editorTheme = createTheme({
 export const Editor = () => {
   const { tokens, setTokens } = useToken();
   return (
-    <ThemeProvider theme={editorTheme}>
-      <JsonForms
-        schema={schema}
-        uischema={uischema}
-        data={tokens}
-        renderers={[
-          ...materialRenderers,
-          colorRenderer,
-          numberRenderer,
-          fontFamilyRenderer,
-          dimensionRenderer,
-          fontWeightRenderer,
-          categorizationLayout,
-        ]}
-        cells={materialCells}
-        onChange={({ data }) => {
-          setTokens(data);
-        }}
-      />
-    </ThemeProvider>
+    <>
+      <EditorToolbar />
+      <ThemeProvider theme={editorTheme}>
+        <JsonForms
+          schema={schema}
+          uischema={uischema}
+          data={tokens}
+          renderers={[
+            ...materialRenderers,
+            colorRenderer,
+            numberRenderer,
+            fontFamilyRenderer,
+            dimensionRenderer,
+            fontWeightRenderer,
+            categorizationLayout,
+          ]}
+          cells={materialCells}
+          onChange={({ data }) => {
+            setTokens(data);
+          }}
+        />
+      </ThemeProvider>
+    </>
   );
 };

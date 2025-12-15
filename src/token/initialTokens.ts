@@ -1,38 +1,38 @@
-import { hex2colorToken } from "../controls/colorRenderer";
+import { color2token } from "../controls/colorRenderer";
 
 export const initialTokens = {
   color: {
     primary: {
-      $root: hex2colorToken("#3065c0"),
-      inverted: hex2colorToken("#4e83e0"),
+      $root: color2token("#3065c0"),
+      inverted: color2token("#4e83e0"),
     },
     bg: {
-      $root: hex2colorToken("#fff"),
-      inverted: hex2colorToken("#0f203e"),
+      $root: color2token("#fff"),
+      inverted: color2token("#0f203e"),
     },
     fg: {
-      $root: hex2colorToken("#06081f"),
-      inverted: hex2colorToken("#fff"),
+      $root: color2token("#06081f"),
+      inverted: color2token("#fff"),
     },
     link: {
-      $root: hex2colorToken("#3065c0"),
-      inverted: hex2colorToken("#98b2e0"),
+      $root: color2token("#3065c0"),
+      inverted: color2token("#98b2e0"),
     },
     positive: {
-      $root: hex2colorToken("#23831b"),
-      inverted: hex2colorToken("#6edb64"),
+      $root: color2token("#23831b"),
+      inverted: color2token("#6edb64"),
     },
     negative: {
-      $root: hex2colorToken("#ff1a57"),
-      inverted: hex2colorToken("#d21d48"),
+      $root: color2token("#ff1a57"),
+      inverted: color2token("#d21d48"),
     },
     notice: {
-      $root: hex2colorToken("#64c2db"),
-      inverted: hex2colorToken("#00718f"),
+      $root: color2token("#64c2db"),
+      inverted: color2token("#00718f"),
     },
     informative: {
-      $root: hex2colorToken("#64c2db"),
-      inverted: hex2colorToken("#00718f"),
+      $root: color2token("#64c2db"),
+      inverted: color2token("#00718f"),
     },
     scale: {
       "1": { $type: "number", $value: 0.95 },

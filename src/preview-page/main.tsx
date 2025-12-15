@@ -34,40 +34,38 @@ const updateLinkTag = (key: string, href: string | undefined) => {
   }
 };
 
-window.addEventListener(
-  "message",
-  (
-    event: MessageEvent<{ css: string; _fontHref?: Record<string, string> }>
-  ) => {
-    if (event.data) {
-      const { css, _fontHref = {} } = event.data;
-      styleTag.textContent = css;
-      for (const key in _fontHref) {
-        updateLinkTag(key, _fontHref[key]);
-      }
-      // } else {
-      //   console.log(event);
+const updateTokens = () => {
+  styleTag.textContent = localStorage.getItem("css");
+
+  const rawTokens = localStorage.getItem("tokens");
+  if (rawTokens) {
+    const { _fontHref = {} } = JSON.parse(rawTokens);
+    for (const key in _fontHref) {
+      updateLinkTag(key, _fontHref[key]);
     }
   }
-);
+};
+
+window.addEventListener("storage", updateTokens);
+updateTokens();
 
 const pages: Record<string, LazyExoticComponent<FunctionComponent>> = {
   "color-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/color-demo")
+    () => import("@kickstartds/ds-agency-premium/playground/color-demo"),
   ),
   "font-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/font-demo")
+    () => import("@kickstartds/ds-agency-premium/playground/font-demo"),
   ),
   "spacing-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/spacing-demo")
+    () => import("@kickstartds/ds-agency-premium/playground/spacing-demo"),
   ),
   landingpage: lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/landingpage")
+    () => import("@kickstartds/ds-agency-premium/pages/landingpage"),
   ),
   about: lazy(() => import("@kickstartds/ds-agency-premium/pages/about")),
   jobs: lazy(() => import("@kickstartds/ds-agency-premium/pages/jobs")),
   "jobs-detail": lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail")
+    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail"),
   ),
   overview: lazy(() => import("@kickstartds/ds-agency-premium/pages/overview")),
 };
@@ -107,5 +105,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Demo />
       </Providers>
     </PageWrapper>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

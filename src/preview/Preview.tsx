@@ -46,27 +46,15 @@ const useIframeSrc = () => {
 };
 
 export const Preview = () => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
   const searchParams = useSearchParams();
 
   const [width, setWidth] = useState(widths[0]);
   const [page, setPage] = useState(searchParams.get("page") || pages[0].value);
-
-  const { tokens, cssString } = useToken();
-  const [iframeLoaded, setIframeLoaded] = useState(false);
   const iframeSrc = useIframeSrc();
 
   useEffect(() => {
     searchParams.set("page", page);
   }, [page]);
-  useEffect(() => {
-    if (iframeRef.current && iframeLoaded && cssString) {
-      iframeRef.current.contentWindow?.postMessage({
-        css: cssString,
-        _fontHref: tokens._fontHref,
-      });
-    }
-  }, [iframeRef, cssString, iframeLoaded]);
 
   return (
     <div className="preview">
@@ -93,11 +81,9 @@ export const Preview = () => {
         >
           <iframe
             className="preview__iframe"
-            ref={iframeRef}
             src={iframeSrc}
             title="Preview"
             style={{ width }}
-            onLoad={() => setIframeLoaded(true)}
           />
         </Box>
       </Box>
