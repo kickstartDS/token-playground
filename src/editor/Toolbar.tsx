@@ -4,6 +4,7 @@ import { SaveAs } from "./toolbar/SaveAs";
 import { Save } from "./toolbar/Save";
 import { Restore } from "./toolbar/Restore";
 import { Load } from "./toolbar/Load";
+import { Code } from "./toolbar/Code";
 
 export const EditorToolbar = () => {
   return (
@@ -13,6 +14,7 @@ export const EditorToolbar = () => {
         <Save />
         <SaveAs />
         <Load />
+        <Code />
       </Toolbar>
     </AppBar>
   );
