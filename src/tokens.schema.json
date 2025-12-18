@@ -126,6 +126,12 @@
     },
     "spacing": {
       "$ref": "#/definitions/size"
+    },
+    "_fontHref": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
     }
   },
   "required": [
