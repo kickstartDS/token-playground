@@ -9,19 +9,19 @@ import SaveAsIcon from "@mui/icons-material/SaveAs";
 
 import { useToken } from "../../token/TokenContext";
 import TextField from "@mui/material/TextField";
-import { useSearchParams } from "../../utils/router";
+import { usePreset } from "../../presets/PresetContext";
 
 export const SaveAs = () => {
   const formId = useId();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const searchParams = useSearchParams();
+  const { presetName, selectPreset } = usePreset();
+  const { savePreset } = useToken();
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
 
-  const { savePreset } = useToken();
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -39,9 +39,7 @@ export const SaveAs = () => {
         }
       } finally {
         setLoading(false);
-        if (name !== searchParams.get("t")) {
-          searchParams.set("t", name);
-        }
+        selectPreset(name);
       }
     }
   };
@@ -67,7 +65,7 @@ export const SaveAs = () => {
               error={!!error}
               helperText={error}
               disabled={loading}
-              defaultValue={searchParams.get("t") || ""}
+              defaultValue={presetName || ""}
             />
           </form>
         </DialogContent>

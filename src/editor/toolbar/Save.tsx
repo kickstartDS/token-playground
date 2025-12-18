@@ -1,17 +1,17 @@
 import IconButton from "@mui/material/IconButton";
 import SaveIcon from "@mui/icons-material/Save";
-import { useSearchParams } from "../../utils/router";
+import { usePreset } from "../../presets/PresetContext";
 import { useToken } from "../../token/TokenContext";
 
 export const Save = () => {
+  const { presetName } = usePreset();
   const { savePreset } = useToken();
-  const searchParams = useSearchParams();
-  const tokenParam = searchParams.get("t");
+
   return (
     <IconButton
       aria-label="save"
       onClick={() => savePreset()}
-      disabled={!tokenParam}
+      disabled={!presetName}
     >
       <SaveIcon />
     </IconButton>

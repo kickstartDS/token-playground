@@ -10,26 +10,24 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { useToken } from "../../token/TokenContext";
-import { useSearchParams } from "../../utils/router";
+import { usePreset } from "../../presets/PresetContext";
 
 export const Load = () => {
   const formId = useId();
   const selectId = useId();
   const [open, setOpen] = useState(false);
-  const searchParams = useSearchParams();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { getPresetList, presetListData } = useToken();
+  const { presetName, presetNames, getPresetList, selectPreset } = usePreset();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const name = formData.get("name");
     if (typeof name === "string") {
-      searchParams.set("t", name);
+      selectPreset(name);
+      handleClose();
     }
-    handleClose();
   };
 
   useEffect(() => {
@@ -51,7 +49,7 @@ export const Load = () => {
             <FormControl
               fullWidth
               sx={{ marginTop: 1 }}
-              disabled={!presetListData}
+              disabled={!presetNames}
             >
               <InputLabel id={selectId}>Preset</InputLabel>
               <Select
@@ -59,9 +57,9 @@ export const Load = () => {
                 id={selectId}
                 label="Preset"
                 name="name"
-                defaultValue={searchParams.get("t") || ""}
+                defaultValue={presetName || ""}
               >
-                {presetListData?.map((presetName) => (
+                {presetNames?.map((presetName) => (
                   <MenuItem key={presetName} value={presetName}>
                     {presetName}
                   </MenuItem>
