@@ -6,7 +6,11 @@ const getType = (ctx: TraverseContext | undefined): string | undefined => {
     if (ctx.node.$type) return ctx.node.$type;
   }
 };
-const getValue = ($type: string | undefined, $value: any): string => {
+const getValue = (
+  name: string,
+  $type: string | undefined,
+  $value: any,
+): string => {
   switch ($type) {
     case "color":
       return (
@@ -26,6 +30,12 @@ const getValue = ($type: string | undefined, $value: any): string => {
     case "dimension":
       return $value.value + $value.unit;
 
+    case "number":
+      if (name.startsWith("color-scale-")) {
+        return Math.round($value * 100) + "%";
+      }
+      return $value;
+
     default:
       return $value;
   }
@@ -35,7 +45,7 @@ export const tokensToCss = (tokens: any) =>
     if (this.key === "$value") {
       const name = this.parent!.path.filter((seg) => seg !== "$root").join("-");
       const $type = getType(this);
-      const value = getValue($type, $value);
+      const value = getValue(name, $type, $value);
 
       acc += `  --ks-brand-${name}: ${value};\n`;
     }
