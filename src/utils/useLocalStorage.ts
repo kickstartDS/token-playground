@@ -1,4 +1,4 @@
-// https://github.com/small-lab-io/usehooks.io/blob/main/packages/hooks/src/use-local-storage/index.ts
+// https://www.usehooks.io/docs/use-local-storage
 
 import { useState } from "react";
 
