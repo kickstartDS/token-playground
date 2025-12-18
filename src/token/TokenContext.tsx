@@ -35,7 +35,7 @@ export const TokenContextProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [tokens]);
 
   useEffect(() => {
-    setTokens(preset);
+    if (preset) setTokens(preset);
   }, [preset]);
 
   return (

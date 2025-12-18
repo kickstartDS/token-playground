@@ -39,9 +39,15 @@ const updateTokens = () => {
 
   const rawTokens = localStorage.getItem("tokens");
   if (rawTokens) {
-    const { _fontHref = {} } = JSON.parse(rawTokens);
-    for (const key in _fontHref) {
-      updateLinkTag(key, _fontHref[key]);
+    try {
+      const tokens = JSON.parse(rawTokens);
+      const { _fontHref = {} } = tokens;
+      for (const key in _fontHref) {
+        updateLinkTag(key, _fontHref[key]);
+      }
+    } catch (e) {
+      console.error(e);
+      console.log("rawTokens", rawTokens);
     }
   }
 };
