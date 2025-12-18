@@ -1,4 +1,4 @@
-import { color2token } from "../controls/colorRenderer";
+import { color2token } from "../utils/color2token";
 
 export const initialTokens = {
   color: {
