@@ -34,6 +34,10 @@ export const TokenContextProvider: FC<PropsWithChildren> = ({ children }) => {
     localStorage.setItem("css", tokensToCss(tokens));
   }, [tokens]);
 
+  useEffect(() => {
+    setTokens(preset);
+  }, [preset]);
+
   return (
     <TokenContext.Provider
       value={{
