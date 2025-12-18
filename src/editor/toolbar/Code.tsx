@@ -8,6 +8,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import TextField from "@mui/material/TextField";
 import { useToken } from "../../token/TokenContext";
+import { validate } from "../../tokens.schema.validate";
 
 export const Code = () => {
   const formId = useId();
@@ -23,7 +24,16 @@ export const Code = () => {
     const code = formData.get("code");
     if (typeof code === "string") {
       try {
-        setTokens(JSON.parse(code));
+        const parsed = JSON.parse(code);
+        if (!validate(parsed)) {
+          if (validate.errors) {
+            const [firstError] = validate.errors;
+            setError(`${firstError.instancePath} ${firstError.message}`);
+          }
+        } else {
+          setTokens(parsed);
+          handleClose();
+        }
       } catch (e) {
         setError("Invalid JSON");
       }
