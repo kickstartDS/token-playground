@@ -10,6 +10,9 @@
         "primary": {
           "$ref": "#/definitions/colorPair"
         },
+        "onPrimary": {
+          "$ref": "#/definitions/colorPair"
+        },
         "bg": {
           "$ref": "#/definitions/colorPair"
         },
@@ -134,11 +137,7 @@
       }
     }
   },
-  "required": [
-    "color",
-    "font",
-    "spacing"
-  ],
+  "required": ["color", "font", "spacing"],
   "additionalProperties": false,
   "definitions": {
     "color": {
@@ -176,10 +175,7 @@
               "maxItems": 3
             }
           },
-          "required": [
-            "colorSpace",
-            "components"
-          ]
+          "required": ["colorSpace", "components"]
         }
       }
     },
@@ -206,10 +202,7 @@
           "maximum": 1
         }
       },
-      "required": [
-        "$type",
-        "$value"
-      ]
+      "required": ["$type", "$value"]
     },
     "fontFamily": {
       "type": "object",
@@ -224,10 +217,7 @@
           }
         }
       },
-      "required": [
-        "$type",
-        "$value"
-      ]
+      "required": ["$type", "$value"]
     },
     "fontWeight": {
       "type": "object",
@@ -239,10 +229,7 @@
           "type": "integer"
         }
       },
-      "required": [
-        "$type",
-        "$value"
-      ]
+      "required": ["$type", "$value"]
     },
     "size": {
       "type": "object",
@@ -266,10 +253,7 @@
               }
             }
           },
-          "required": [
-            "$type",
-            "$value"
-          ]
+          "required": ["$type", "$value"]
         },
         "shrink-factor": {
           "$ref": "#/definitions/number"
@@ -293,10 +277,7 @@
           "minimum": 0
         }
       },
-      "required": [
-        "$type",
-        "$value"
-      ]
+      "required": ["$type", "$value"]
     }
   }
 }

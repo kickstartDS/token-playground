@@ -6,6 +6,10 @@ export const initialTokens = {
       $root: color2token("#3065c0"),
       inverted: color2token("#4e83e0"),
     },
+    onPrimary: {
+      $root: color2token("#fff"),
+      inverted: color2token("#fff"),
+    },
     bg: {
       $root: color2token("#fff"),
       inverted: color2token("#0f203e"),

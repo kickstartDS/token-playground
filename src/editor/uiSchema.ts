@@ -10,6 +10,7 @@ export const uischema = {
           elements: [
             ...[
               "primary",
+              "onPrimary",
               "bg",
               "fg",
               "link",
