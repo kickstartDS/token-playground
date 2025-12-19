@@ -6,6 +6,7 @@ import { useToken } from "../token/TokenContext";
 import { Select } from "../controls/select/Select";
 import "./Preview.scss";
 import { useSearchParams } from "../utils/router";
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 const widths = ["100%", "400px", "800px"];
 const pages = [
@@ -21,6 +22,7 @@ const useIframeSrc = () => {
 
   const pageParam = searchParams.get("page");
   const categoryParam = searchParams.get("cat");
+  const invertedParam = searchParams.get("inverted");
 
   const hash = useMemo(() => {
     if (pageParam) {
@@ -42,7 +44,7 @@ const useIframeSrc = () => {
     return "color-demo";
   }, [pageParam, categoryParam]);
 
-  return `./preview.html#!${hash}`;
+  return `./preview.html#!${hash}${invertedParam ? "?inverted=1" : ""}`;
 };
 
 export const Preview = () => {
@@ -50,11 +52,20 @@ export const Preview = () => {
 
   const [width, setWidth] = useState(widths[0]);
   const [page, setPage] = useState(searchParams.get("page") || pages[0].value);
+  const [inverted, setInverted] = useState(false);
   const iframeSrc = useIframeSrc();
 
   useEffect(() => {
     searchParams.set("page", page);
   }, [page]);
+
+  useEffect(() => {
+    if (inverted) {
+      searchParams.set("inverted", "1");
+    } else {
+      searchParams.delete("inverted");
+    }
+  }, [inverted]);
 
   return (
     <div className="preview">
@@ -71,6 +82,15 @@ export const Preview = () => {
             value={width}
             onChange={setWidth}
             label="viewport"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={inverted}
+                onChange={(e) => setInverted(e.target.checked)}
+              />
+            }
+            label="Inverted?"
           />
         </Toolbar>
       </AppBar>
