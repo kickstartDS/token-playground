@@ -57,21 +57,21 @@ updateTokens();
 
 const pages: Record<string, LazyExoticComponent<FunctionComponent>> = {
   "color-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/color-demo"),
+    () => import("@kickstartds/ds-agency-premium/playground/color-demo")
   ),
   "font-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/font-demo"),
+    () => import("@kickstartds/ds-agency-premium/playground/font-demo")
   ),
   "spacing-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/spacing-demo"),
+    () => import("@kickstartds/ds-agency-premium/playground/spacing-demo")
   ),
   landingpage: lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/landingpage"),
+    () => import("@kickstartds/ds-agency-premium/pages/landingpage")
   ),
   about: lazy(() => import("@kickstartds/ds-agency-premium/pages/about")),
   jobs: lazy(() => import("@kickstartds/ds-agency-premium/pages/jobs")),
   "jobs-detail": lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail"),
+    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail")
   ),
   overview: lazy(() => import("@kickstartds/ds-agency-premium/pages/overview")),
 };
@@ -79,16 +79,37 @@ const pages: Record<string, LazyExoticComponent<FunctionComponent>> = {
 const Demo = () => {
   const [category, setCategory] = useState("color-demo");
   const DemoComponent = useMemo(() => pages[category], [category]);
-  const handler = useCallback(() => {
-    const hash = location.hash.slice(2);
+  const hashHandler = useCallback(() => {
+    const hash = location.hash.slice(2).split("?")[0];
     if (hash) setCategory(hash);
   }, []);
 
   useEffect(() => {
-    handler();
-    window.addEventListener("hashchange", handler);
-    return () => window.removeEventListener("hashchange", handler);
-  }, [handler]);
+    hashHandler();
+    window.addEventListener("hashchange", hashHandler);
+    return () => window.removeEventListener("hashchange", hashHandler);
+  }, [hashHandler]);
+
+  const invertedHandler = useCallback(() => {
+    const query = location.hash.slice(2).split("?")[1];
+    const params = new URLSearchParams(query);
+    const inverted = params.get("inverted");
+    if (inverted === "1") {
+      document.documentElement
+        .querySelector("#root")
+        ?.setAttribute("ks-inverted", "true");
+    } else {
+      document.documentElement
+        .querySelector("#root")
+        ?.removeAttribute("ks-inverted");
+    }
+  }, []);
+
+  useEffect(() => {
+    invertedHandler();
+    window.addEventListener("hashchange", invertedHandler);
+    return () => window.removeEventListener("hashchange", invertedHandler);
+  }, [invertedHandler]);
 
   return (
     <Suspense>
@@ -111,5 +132,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Demo />
       </Providers>
     </PageWrapper>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
