@@ -12,6 +12,10 @@ const result = {
       $root: color2token(brand.color.primary),
       inverted: color2token(brand.color["primary-inverted"]),
     },
+    onPrimary: {
+      $root: color2token(brand.color.onPrimary),
+      inverted: color2token(brand.color["onPrimary-inverted"]),
+    },
     bg: {
       $root: color2token(brand.color.bg),
       inverted: color2token(brand.color["bg-inverted"]),
