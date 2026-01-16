@@ -6,6 +6,7 @@ import {
   SetStateAction,
   useContext,
   useEffect,
+  useMemo,
 } from "react";
 import { tokensToCss } from "./tokensToCss";
 import { initialTokens } from "./initialTokens";
@@ -15,6 +16,7 @@ import { usePreset } from "../presets/PresetContext";
 export interface ITokenContext {
   setTokens: Dispatch<SetStateAction<any>>;
   tokens: any;
+  css: string;
   resetTokens: () => void;
   savePreset: (name?: string) => Promise<void>;
 }
@@ -22,6 +24,7 @@ export interface ITokenContext {
 const TokenContext = createContext<ITokenContext>({
   setTokens() {},
   tokens: initialTokens,
+  css: tokensToCss(initialTokens),
   resetTokens() {},
   async savePreset() {},
 });
@@ -29,10 +32,11 @@ const TokenContext = createContext<ITokenContext>({
 export const TokenContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [tokens, setTokens] = useLocalStorage<object>("tokens", initialTokens);
   const { preset, savePreset } = usePreset();
+  const css = useMemo(() => tokensToCss(tokens), [tokens]);
 
   useEffect(() => {
-    localStorage.setItem("css", tokensToCss(tokens));
-  }, [tokens]);
+    localStorage.setItem("css", css);
+  }, [css]);
 
   useEffect(() => {
     if (preset) setTokens(preset);
@@ -43,6 +47,7 @@ export const TokenContextProvider: FC<PropsWithChildren> = ({ children }) => {
       value={{
         tokens,
         setTokens,
+        css,
         resetTokens() {
           setTokens(preset || initialTokens);
         },
