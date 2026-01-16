@@ -16,7 +16,13 @@ export const Css = () => {
   const handleClose = () => setOpen(false);
   const handleCopy = () => {
     try {
-      void navigator.clipboard.writeText(css);
+      void navigator.clipboard.writeText(
+        css
+          .split("\n")
+          .map((line) => line.trim())
+          .join(" ")
+          .trim(),
+      );
     } catch (error) {
       console.error(error);
     }
