@@ -130,6 +130,36 @@
     "spacing": {
       "$ref": "#/definitions/size"
     },
+    "border": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "object",
+          "properties": {
+            "default": {
+              "$ref": "#/definitions/dimension"
+            },
+            "emphasized": {
+              "$ref": "#/definitions/dimension"
+            }
+          }
+        },
+        "radius": {
+          "type": "object",
+          "properties": {
+            "control": {
+              "$ref": "#/definitions/dimension"
+            },
+            "card": {
+              "$ref": "#/definitions/dimension"
+            },
+            "surface": {
+              "$ref": "#/definitions/dimension"
+            }
+          }
+        }
+      }
+    },
     "_fontHref": {
       "type": "object",
       "additionalProperties": {
@@ -137,7 +167,7 @@
       }
     }
   },
-  "required": ["color", "font", "spacing"],
+  "required": ["color", "font", "spacing", "border"],
   "additionalProperties": false,
   "definitions": {
     "color": {
@@ -231,29 +261,32 @@
       },
       "required": ["$type", "$value"]
     },
+    "dimension": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "const": "dimension"
+        },
+        "$value": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "const": "px"
+            }
+          }
+        }
+      },
+      "required": ["$type", "$value"]
+    },
     "size": {
       "type": "object",
       "properties": {
         "base": {
-          "type": "object",
-          "properties": {
-            "$type": {
-              "const": "dimension"
-            },
-            "$value": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "number"
-                },
-                "unit": {
-                  "type": "string",
-                  "const": "px"
-                }
-              }
-            }
-          },
-          "required": ["$type", "$value"]
+          "$ref": "#/definitions/dimension"
         },
         "shrink-factor": {
           "$ref": "#/definitions/number"

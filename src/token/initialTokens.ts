@@ -181,4 +181,30 @@ export const initialTokens = {
     "grow-factor": { $type: "number", $value: 1.5 },
     "bp-factor": { $type: "number", $value: 1.5 },
   },
+  border: {
+    width: {
+      default: {
+        $type: "dimension",
+        $value: { value: 1, unit: "px" },
+      },
+      emphasized: {
+        $type: "dimension",
+        $value: { value: 2, unit: "px" },
+      },
+    },
+    radius: {
+      control: {
+        $type: "dimension",
+        $value: { value: 8, unit: "px" },
+      },
+      card: {
+        $type: "dimension",
+        $value: { value: 12, unit: "px" },
+      },
+      surface: {
+        $type: "dimension",
+        $value: { value: 16, unit: "px" },
+      },
+    },
+  },
 };

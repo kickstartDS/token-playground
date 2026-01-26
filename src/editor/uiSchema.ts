@@ -92,7 +92,7 @@ export const uischema = {
                 (name) => ({
                   type: "Control",
                   scope: `#/properties/font/properties/weight/properties/${name}`,
-                })
+                }),
               ),
             },
           ],
@@ -118,6 +118,44 @@ export const uischema = {
         {
           type: "Control",
           scope: `#/properties/spacing/properties/bp-factor`,
+        },
+      ],
+    },
+    {
+      type: "Category",
+      label: "Border",
+      elements: [
+        {
+          type: "Group",
+          label: " Border Width",
+          elements: [
+            {
+              type: "Control",
+              scope: `#/properties/border/properties/width/properties/default`,
+            },
+            {
+              type: "Control",
+              scope: `#/properties/border/properties/width/properties/emphasized`,
+            },
+          ],
+        },
+        {
+          type: "Group",
+          label: "Border Radius",
+          elements: [
+            {
+              type: "Control",
+              scope: `#/properties/border/properties/radius/properties/control`,
+            },
+            {
+              type: "Control",
+              scope: `#/properties/border/properties/radius/properties/card`,
+            },
+            {
+              type: "Control",
+              scope: `#/properties/border/properties/radius/properties/surface`,
+            },
+          ],
         },
       ],
     },
