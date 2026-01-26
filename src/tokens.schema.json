@@ -160,6 +160,35 @@
         }
       }
     },
+    "box-shadow": {
+      "type": "object",
+      "properties": {
+        "control": {
+          "type": "object",
+          "properties": {
+            "blur": {
+              "$ref": "#/definitions/dimension"
+            }
+          }
+        },
+        "card": {
+          "type": "object",
+          "properties": {
+            "blur": {
+              "$ref": "#/definitions/dimension"
+            }
+          }
+        },
+        "surface": {
+          "type": "object",
+          "properties": {
+            "blur": {
+              "$ref": "#/definitions/dimension"
+            }
+          }
+        }
+      }
+    },
     "_fontHref": {
       "type": "object",
       "additionalProperties": {
@@ -167,7 +196,7 @@
       }
     }
   },
-  "required": ["color", "font", "spacing", "border"],
+  "required": ["color", "font", "spacing", "border", "shadow"],
   "additionalProperties": false,
   "definitions": {
     "color": {

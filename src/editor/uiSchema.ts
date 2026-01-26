@@ -159,6 +159,27 @@ export const uischema = {
         },
       ],
     },
+    {
+      type: "Category",
+      label: "Box-Shadow",
+      elements: [
+        {
+          type: "Control",
+          label: "Control Blur",
+          scope: `#/properties/box-shadow/properties/control/properties/blur`,
+        },
+        {
+          type: "Control",
+          label: "Card Blur",
+          scope: `#/properties/box-shadow/properties/card/properties/blur`,
+        },
+        {
+          type: "Control",
+          label: "Surface Blur",
+          scope: `#/properties/box-shadow/properties/surface/properties/blur`,
+        },
+      ],
+    },
   ],
   options: {
     searchParam: "cat",

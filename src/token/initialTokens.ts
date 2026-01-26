@@ -207,4 +207,24 @@ export const initialTokens = {
       },
     },
   },
+  "box-shadow": {
+    control: {
+      blur: {
+        $type: "dimension",
+        $value: { value: 1, unit: "px" },
+      },
+    },
+    card: {
+      blur: {
+        $type: "dimension",
+        $value: { value: 2, unit: "px" },
+      },
+    },
+    surface: {
+      blur: {
+        $type: "dimension",
+        $value: { value: 6, unit: "px" },
+      },
+    },
+  },
 };
