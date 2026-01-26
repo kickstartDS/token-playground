@@ -2,6 +2,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import netlify from "@netlify/vite-plugin";
+import schemaPlugin from "./scripts/schema-vite-plugin.js";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
       blobs: { enabled: true },
       edgeFunctions: { enabled: false },
     }),
+    schemaPlugin(),
   ],
   build: {
     rollupOptions: {
