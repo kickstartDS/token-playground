@@ -2,11 +2,11 @@ import { ControlProps, rankWith, scopeEndIs } from "@jsonforms/core";
 import { withJsonFormsControlProps } from "@jsonforms/react";
 import { Unwrapped } from "@jsonforms/material-renderers";
 
-const { MaterialNumberControl } = Unwrapped;
+const { MaterialIntegerControl } = Unwrapped;
 
 export const renderer = withJsonFormsControlProps((props: ControlProps) => {
   return (
-    <MaterialNumberControl
+    <MaterialIntegerControl
       {...props}
       schema={props.schema.properties!.$value!.properties!.value!}
       data={props.data?.$value?.value}
