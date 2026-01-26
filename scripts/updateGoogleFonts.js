@@ -1,10 +1,10 @@
 import fs from "node:fs/promises";
 import process from "node:process";
-import 'dotenv/config';
+import "dotenv/config";
 
 const key = process.env.GOOGLE_FONTS_API_KEY;
 
-if (!key) throw new Error("GOOGLE_FONTS_API_KEY not found")
+if (!key) throw new Error("GOOGLE_FONTS_API_KEY not found");
 
 const url = new URL("https://www.googleapis.com/webfonts/v1/webfonts");
 url.searchParams.set("key", key);

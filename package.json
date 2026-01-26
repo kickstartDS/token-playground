@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc && rm -rf dist && vite build",
+    "format": "prettier . --write --list-different",
     "prepare": "pnpm schema",
     "preview": "vite preview",
     "schema": "node scripts/schema",

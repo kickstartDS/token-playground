@@ -37,7 +37,7 @@ export const useSearchParams = (): SearchParams => {
         subscribers.delete(callback);
       };
     },
-    () => getCurrentUrl().search
+    () => getCurrentUrl().search,
   );
   return useMemo(() => new SearchParams(search), [search]);
 };

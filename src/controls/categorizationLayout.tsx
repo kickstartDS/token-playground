@@ -60,10 +60,10 @@ const isSingleLevelCategorization: Tester = and(
       categorization.elements &&
       categorization.elements.reduce(
         (acc, e) => acc && e.type === "Category",
-        true
+        true,
       )
     );
-  }
+  },
 );
 
 export const tester: RankedTester = rankWith(2, isSingleLevelCategorization);
@@ -72,9 +72,7 @@ export interface CategorizationState {
 }
 
 export interface MaterialCategorizationLayoutRendererProps
-  extends StatePropsOfLayout,
-    AjvProps,
-    TranslateProps {
+  extends StatePropsOfLayout, AjvProps, TranslateProps {
   selected?: number;
   ownState?: boolean;
   data?: any;
@@ -82,7 +80,7 @@ export interface MaterialCategorizationLayoutRendererProps
 }
 
 export const MaterialCategorizationLayoutRenderer = (
-  props: MaterialCategorizationLayoutRendererProps
+  props: MaterialCategorizationLayoutRendererProps,
 ) => {
   const searchParams = useSearchParams();
   const {
@@ -106,15 +104,15 @@ export const MaterialCategorizationLayoutRenderer = (
   const searchParamValue = searchParams.get(uischema.options?.searchParam);
   const initalCategory = searchParamValue
     ? Number(searchParamValue)
-    : selected ?? 0;
+    : (selected ?? 0);
   const [activeCategory, setActiveCategory] = useState<number>(initalCategory);
   const categories = useMemo(
     () =>
       categorization.elements.filter((category) =>
         // @ts-expect-error
-        isVisible(category, data, undefined, ajv, config)
+        isVisible(category, data, undefined, ajv, config),
       ),
-    [categorization, data, ajv, config]
+    [categorization, data, ajv, config],
   );
 
   useEffect(() => {
@@ -185,6 +183,6 @@ export const MaterialCategorizationLayoutRenderer = (
 
 export const renderer = withAjvProps(
   withTranslateProps(
-    withJsonFormsLayoutProps(MaterialCategorizationLayoutRenderer)
-  )
+    withJsonFormsLayoutProps(MaterialCategorizationLayoutRenderer),
+  ),
 );

@@ -57,21 +57,21 @@ updateTokens();
 
 const pages: Record<string, LazyExoticComponent<FunctionComponent>> = {
   "color-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/color-demo")
+    () => import("@kickstartds/ds-agency-premium/playground/color-demo"),
   ),
   "font-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/font-demo")
+    () => import("@kickstartds/ds-agency-premium/playground/font-demo"),
   ),
   "spacing-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/spacing-demo")
+    () => import("@kickstartds/ds-agency-premium/playground/spacing-demo"),
   ),
   landingpage: lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/landingpage")
+    () => import("@kickstartds/ds-agency-premium/pages/landingpage"),
   ),
   about: lazy(() => import("@kickstartds/ds-agency-premium/pages/about")),
   jobs: lazy(() => import("@kickstartds/ds-agency-premium/pages/jobs")),
   "jobs-detail": lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail")
+    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail"),
   ),
   overview: lazy(() => import("@kickstartds/ds-agency-premium/pages/overview")),
 };
@@ -132,5 +132,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Demo />
       </Providers>
     </PageWrapper>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

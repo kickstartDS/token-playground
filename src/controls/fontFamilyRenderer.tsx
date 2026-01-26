@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import FormHelperText from "@mui/material/FormHelperText";
-import {
-  isDescriptionHidden,
-  rankWith,
-  scopeEndIs,
-} from "@jsonforms/core";
+import { isDescriptionHidden, rankWith, scopeEndIs } from "@jsonforms/core";
 import { useFocus } from "@jsonforms/material-renderers";
 import {
   withJsonFormsControlProps,
@@ -15,7 +11,7 @@ import {
 import fontList from "../fonts.json";
 
 const fonts = new Set(fontList);
-const options = fontList
+const options = fontList;
 
 /**
  * https://github.com/eclipsesource/jsonforms/blob/master/packages/material-renderers/src/mui-controls/MuiAutocomplete.tsx
@@ -43,14 +39,14 @@ export const renderer = withJsonFormsControlProps(
       visible,
       description,
       focused,
-      false
+      false,
     );
 
     const firstFormHelperText = showDescription
       ? description
       : !isValid
-      ? errors
-      : null;
+        ? errors
+        : null;
     const secondFormHelperText = showDescription && !isValid ? errors : null;
 
     useEffect(() => {
@@ -111,7 +107,7 @@ export const renderer = withJsonFormsControlProps(
         <FormHelperText error={!isValid}>{secondFormHelperText}</FormHelperText>
       </>
     );
-  })
+  }),
 );
 
 export const tester = rankWith(3, (uischema, schema) => {
