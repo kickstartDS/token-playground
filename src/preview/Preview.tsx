@@ -28,6 +28,12 @@ const useIframeSrc = () => {
       switch (pageParam) {
         case "demo":
           switch (categoryParam) {
+            case "5":
+              return "transition-demo";
+            case "4":
+              return "shadow-demo";
+            case "3":
+              return "border-demo";
             case "2":
               return "spacing-demo";
             case "1":

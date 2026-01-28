@@ -65,6 +65,15 @@ const pages: Record<string, LazyExoticComponent<FunctionComponent>> = {
   "spacing-demo": lazy(
     () => import("@kickstartds/ds-agency-premium/playground/spacing-demo"),
   ),
+  "border-demo": lazy(
+    () => import("@kickstartds/ds-agency-premium/playground/border-demo"),
+  ),
+  "shadow-demo": lazy(
+    () => import("@kickstartds/ds-agency-premium/playground/shadow-demo"),
+  ),
+  "transition-demo": lazy(
+    () => import("@kickstartds/ds-agency-premium/playground/transition-demo"),
+  ),
   landingpage: lazy(
     () => import("@kickstartds/ds-agency-premium/pages/landingpage"),
   ),

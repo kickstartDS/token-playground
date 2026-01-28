@@ -128,7 +128,21 @@
       }
     },
     "spacing": {
-      "$ref": "#/definitions/size"
+      "type": "object",
+      "properties": {
+        "factor": {
+          "$ref": "#/definitions/factor"
+        },
+        "shrink-factor": {
+          "$ref": "#/definitions/number"
+        },
+        "grow-factor": {
+          "$ref": "#/definitions/number"
+        },
+        "bp-factor": {
+          "$ref": "#/definitions/number"
+        }
+      }
     },
     "border": {
       "type": "object",
@@ -144,48 +158,30 @@
             }
           }
         },
-        "radius": {
-          "type": "object",
-          "properties": {
-            "control": {
-              "$ref": "#/definitions/dimension"
-            },
-            "card": {
-              "$ref": "#/definitions/dimension"
-            },
-            "surface": {
-              "$ref": "#/definitions/dimension"
-            }
-          }
+        "radius-factor": {
+          "$ref": "#/definitions/factor"
         }
       }
     },
     "box-shadow": {
       "type": "object",
       "properties": {
-        "control": {
-          "type": "object",
-          "properties": {
-            "blur": {
-              "$ref": "#/definitions/dimension"
-            }
-          }
+        "blur-factor": {
+          "$ref": "#/definitions/factor"
         },
-        "card": {
-          "type": "object",
-          "properties": {
-            "blur": {
-              "$ref": "#/definitions/dimension"
-            }
-          }
+        "opacity-factor": {
+          "$ref": "#/definitions/factor"
         },
-        "surface": {
-          "type": "object",
-          "properties": {
-            "blur": {
-              "$ref": "#/definitions/dimension"
-            }
-          }
+        "spread-factor": {
+          "$ref": "#/definitions/factor"
+        }
+      }
+    },
+    "duration": {
+      "type": "object",
+      "properties": {
+        "factor": {
+          "$ref": "#/definitions/factor"
         }
       }
     },
@@ -196,7 +192,7 @@
       }
     }
   },
-  "required": ["color", "font", "spacing", "border", "shadow"],
+  "required": ["color", "font", "spacing", "border", "box-shadow", "duration"],
   "additionalProperties": false,
   "definitions": {
     "color": {
@@ -217,17 +213,20 @@
                 {
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 1
+                  "maximum": 1,
+                  "multipleOf": 0.01
                 },
                 {
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 1
+                  "maximum": 1,
+                  "multipleOf": 0.01
                 },
                 {
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 1
+                  "maximum": 1,
+                  "multipleOf": 0.01
                 }
               ],
               "minItems": 3,
@@ -258,7 +257,8 @@
         "$value": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1
+          "maximum": 1,
+          "multipleOf": 0.01
         }
       },
       "required": ["$type", "$value"]
@@ -337,6 +337,22 @@
         "$value": {
           "type": "number",
           "minimum": 0
+        }
+      },
+      "required": ["$type", "$value"]
+    },
+    "factor": {
+      "type": "object",
+      "properties": {
+        "$type": {
+          "const": "number"
+        },
+        "$value": {
+          "type": "number",
+          "default": 1.5,
+          "minimum": 1,
+          "maximum": 2,
+          "multipleOf": 0.01
         }
       },
       "required": ["$type", "$value"]

@@ -173,10 +173,7 @@ export const initialTokens = {
     },
   },
   spacing: {
-    base: {
-      $type: "dimension",
-      $value: { value: 16, unit: "px" },
-    },
+    factor: { $type: "number", $value: 1.5 },
     "shrink-factor": { $type: "number", $value: 1.5 },
     "grow-factor": { $type: "number", $value: 1.5 },
     "bp-factor": { $type: "number", $value: 1.5 },
@@ -192,39 +189,14 @@ export const initialTokens = {
         $value: { value: 2, unit: "px" },
       },
     },
-    radius: {
-      control: {
-        $type: "dimension",
-        $value: { value: 8, unit: "px" },
-      },
-      card: {
-        $type: "dimension",
-        $value: { value: 12, unit: "px" },
-      },
-      surface: {
-        $type: "dimension",
-        $value: { value: 16, unit: "px" },
-      },
-    },
+    "radius-factor": { $type: "number", $value: 1.5 },
   },
   "box-shadow": {
-    control: {
-      blur: {
-        $type: "dimension",
-        $value: { value: 1, unit: "px" },
-      },
-    },
-    card: {
-      blur: {
-        $type: "dimension",
-        $value: { value: 2, unit: "px" },
-      },
-    },
-    surface: {
-      blur: {
-        $type: "dimension",
-        $value: { value: 6, unit: "px" },
-      },
-    },
+    "blur-factor": { $type: "number", $value: 1.5 },
+    "opacity-factor": { $type: "number", $value: 1.5 },
+    "spread-factor": { $type: "number", $value: 1.5 },
+  },
+  duration: {
+    factor: { $type: "number", $value: 1.5 },
   },
 };

@@ -105,7 +105,7 @@ export const uischema = {
       elements: [
         {
           type: "Control",
-          scope: `#/properties/spacing/properties/base`,
+          scope: `#/properties/spacing/properties/factor`,
         },
         {
           type: "Control",
@@ -145,15 +145,7 @@ export const uischema = {
           elements: [
             {
               type: "Control",
-              scope: `#/properties/border/properties/radius/properties/control`,
-            },
-            {
-              type: "Control",
-              scope: `#/properties/border/properties/radius/properties/card`,
-            },
-            {
-              type: "Control",
-              scope: `#/properties/border/properties/radius/properties/surface`,
+              scope: `#/properties/border/properties/radius-factor`,
             },
           ],
         },
@@ -165,18 +157,25 @@ export const uischema = {
       elements: [
         {
           type: "Control",
-          label: "Control Blur",
-          scope: `#/properties/box-shadow/properties/control/properties/blur`,
+          scope: `#/properties/box-shadow/properties/blur-factor`,
         },
         {
           type: "Control",
-          label: "Card Blur",
-          scope: `#/properties/box-shadow/properties/card/properties/blur`,
+          scope: `#/properties/box-shadow/properties/opacity-factor`,
         },
         {
           type: "Control",
-          label: "Surface Blur",
-          scope: `#/properties/box-shadow/properties/surface/properties/blur`,
+          scope: `#/properties/box-shadow/properties/spread-factor`,
+        },
+      ],
+    },
+    {
+      type: "Category",
+      label: "Transition",
+      elements: [
+        {
+          type: "Control",
+          scope: `#/properties/duration/properties/factor`,
         },
       ],
     },
