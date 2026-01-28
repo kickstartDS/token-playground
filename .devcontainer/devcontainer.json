@@ -25,11 +25,15 @@
     "vscode": {
       "settings": {
         "[typescript]": {
-          "editor.defaultFormatter": "prettier.prettier-vscode"
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "editor.formatOnSave": true
       },
-      "extensions": ["editorconfig.editorconfig", "prettier.prettier-vscode"]
+      "extensions": [
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens"
+      ]
     }
   }
 }
