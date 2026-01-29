@@ -133,10 +133,6 @@ export const uischema = {
               type: "Control",
               scope: `#/properties/border/properties/width/properties/default`,
             },
-            {
-              type: "Control",
-              scope: `#/properties/border/properties/width/properties/emphasized`,
-            },
           ],
         },
         {

@@ -184,10 +184,6 @@ export const initialTokens = {
         $type: "dimension",
         $value: { value: 1, unit: "px" },
       },
-      emphasized: {
-        $type: "dimension",
-        $value: { value: 2, unit: "px" },
-      },
     },
     "radius-factor": { $type: "number", $value: 1.5 },
   },

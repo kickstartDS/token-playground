@@ -152,9 +152,6 @@
           "properties": {
             "default": {
               "$ref": "#/definitions/dimension"
-            },
-            "emphasized": {
-              "$ref": "#/definitions/dimension"
             }
           }
         },
@@ -192,7 +189,14 @@
       }
     }
   },
-  "required": ["color", "font", "spacing", "border", "box-shadow", "duration"],
+  "required": [
+    "color",
+    "font",
+    "spacing",
+    "border",
+    "box-shadow",
+    "duration"
+  ],
   "additionalProperties": false,
   "definitions": {
     "color": {
@@ -233,7 +237,10 @@
               "maxItems": 3
             }
           },
-          "required": ["colorSpace", "components"]
+          "required": [
+            "colorSpace",
+            "components"
+          ]
         }
       }
     },
@@ -261,7 +268,10 @@
           "multipleOf": 0.01
         }
       },
-      "required": ["$type", "$value"]
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "fontFamily": {
       "type": "object",
@@ -276,7 +286,10 @@
           }
         }
       },
-      "required": ["$type", "$value"]
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "fontWeight": {
       "type": "object",
@@ -288,7 +301,10 @@
           "type": "integer"
         }
       },
-      "required": ["$type", "$value"]
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "dimension": {
       "type": "object",
@@ -309,7 +325,10 @@
           }
         }
       },
-      "required": ["$type", "$value"]
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "size": {
       "type": "object",
@@ -339,7 +358,10 @@
           "minimum": 0
         }
       },
-      "required": ["$type", "$value"]
+      "required": [
+        "$type",
+        "$value"
+      ]
     },
     "factor": {
       "type": "object",
@@ -355,7 +377,10 @@
           "multipleOf": 0.01
         }
       },
-      "required": ["$type", "$value"]
+      "required": [
+        "$type",
+        "$value"
+      ]
     }
   }
 }
