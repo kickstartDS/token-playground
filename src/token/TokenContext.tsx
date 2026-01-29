@@ -8,8 +8,8 @@ import {
   useEffect,
   useMemo,
 } from "react";
-import { tokensToCss } from "./tokensToCss";
-import { initialTokens } from "./initialTokens";
+import { tokensToCss } from "@kickstartds/ds-agency-premium/tokens/tokensToCss.mjs";
+import initialTokens from "@kickstartds/ds-agency-premium/tokens/branding-tokens.json";
 import { useLocalStorage } from "../utils/useLocalStorage";
 import { usePreset } from "../presets/PresetContext";
 

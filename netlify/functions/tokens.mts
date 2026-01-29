@@ -1,7 +1,6 @@
 import type { Context, Config } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
-
-import { validate } from "../../src/tokens.schema.validate";
+import { validate } from "@kickstartds/ds-agency-premium/tokens/branding-tokens.schema.validate.mjs";
 
 const STORE_NAME = "tokens";
 
@@ -55,7 +54,6 @@ export default async (req: Request, context: Context) => {
           );
         }
         if (!validate(body)) {
-          // @ts-expect-error
           console.error(validate.errors);
           return res(422, "Invalid Data");
         }

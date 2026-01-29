@@ -3,6 +3,7 @@ import {
   materialCells,
   materialRenderers,
 } from "@jsonforms/material-renderers";
+import { createAjv } from "@jsonforms/core";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import * as colorRenderer from "../controls/colorRenderer";
 import * as numberRenderer from "../controls/numberRenderer";
@@ -11,22 +12,13 @@ import * as dimensionRenderer from "../controls/dimensionRenderer";
 import * as fontWeightRenderer from "../controls/fontWeightRenderer";
 import * as categorizationLayout from "../controls/categorizationLayout";
 import { useToken } from "../token/TokenContext";
-import tokenSchema from "../tokens.schema.dereffed.json";
+import tokenSchema from "@kickstartds/ds-agency-premium/tokens/branding-tokens.schema.dereffed.json";
 import { uischema } from "./uiSchema";
 import { EditorToolbar } from "./Toolbar";
 
-const schema = {
-  type: "object",
-  properties: {
-    ...tokenSchema.properties,
-    _fontHref: {
-      type: "object",
-      additionalProperties: {
-        type: "string",
-      },
-    },
-  },
-};
+const schema = { type: "object", properties: tokenSchema.properties };
+const ajv = createAjv({ useDefaults: true });
+
 const editorTheme = createTheme({
   components: {
     MuiGrid: {
@@ -72,6 +64,7 @@ export const Editor = () => {
           onChange={({ data }) => {
             setTokens(data);
           }}
+          ajv={ajv}
         />
       </ThemeProvider>
     </>

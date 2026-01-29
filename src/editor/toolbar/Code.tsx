@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import DialogActions from "@mui/material/DialogActions";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import TextField from "@mui/material/TextField";
+import { validate } from "@kickstartds/ds-agency-premium/tokens/branding-tokens.schema.validate.mjs";
 import { useToken } from "../../token/TokenContext";
-import { validate } from "../../tokens.schema.validate";
 
 export const Code = () => {
   const formId = useId();
