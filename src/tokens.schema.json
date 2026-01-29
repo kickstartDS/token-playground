@@ -134,13 +134,13 @@
           "$ref": "#/definitions/factor"
         },
         "shrink-factor": {
-          "$ref": "#/definitions/number"
+          "$ref": "#/definitions/factor"
         },
         "grow-factor": {
-          "$ref": "#/definitions/number"
+          "$ref": "#/definitions/factor"
         },
         "bp-factor": {
-          "$ref": "#/definitions/number"
+          "$ref": "#/definitions/factor"
         }
       }
     },
@@ -337,13 +337,13 @@
           "$ref": "#/definitions/dimension"
         },
         "shrink-factor": {
-          "$ref": "#/definitions/number"
+          "$ref": "#/definitions/factor"
         },
         "grow-factor": {
-          "$ref": "#/definitions/number"
+          "$ref": "#/definitions/factor"
         },
         "bp-factor": {
-          "$ref": "#/definitions/number"
+          "$ref": "#/definitions/factor"
         }
       }
     },
