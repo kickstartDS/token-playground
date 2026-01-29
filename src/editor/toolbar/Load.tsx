@@ -1,15 +1,15 @@
-import { FormEvent, useEffect, useId, useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import Button from "@mui/material/Button";
-import DialogActions from "@mui/material/DialogActions";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
 import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import { FormEvent, useEffect, useId, useState } from "react";
 import { usePreset } from "../../presets/PresetContext";
 
 export const Load = () => {
@@ -46,11 +46,7 @@ export const Load = () => {
         <DialogTitle>Load</DialogTitle>
         <DialogContent sx={{ minWidth: "26em" }}>
           <form onSubmit={onSubmit} id={formId}>
-            <FormControl
-              fullWidth
-              sx={{ marginTop: 1 }}
-              disabled={!presetNames}
-            >
+            <FormControl fullWidth sx={{ marginTop: 1 }} disabled={!presetNames}>
               <InputLabel id={selectId}>Preset</InputLabel>
               <Select
                 labelId="demo-simple-select-label"

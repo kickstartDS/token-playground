@@ -1,13 +1,9 @@
-import { ComponentProps } from "react";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
 import { rankWith, ControlProps, scopeEndIs } from "@jsonforms/core";
-import {
-  MaterialInputControl,
-  MuiInputText,
-  Unwrapped,
-} from "@jsonforms/material-renderers";
+import { MaterialInputControl, MuiInputText, Unwrapped } from "@jsonforms/material-renderers";
 import { withJsonFormsControlProps } from "@jsonforms/react";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import { ComponentProps } from "react";
 import tinycolor, { type ColorInput } from "tinycolor2";
 
 const { MaterialTextControl } = Unwrapped;
@@ -77,8 +73,5 @@ export const renderer = withJsonFormsControlProps((props: ControlProps) => {
 });
 
 export const tester = rankWith(3, (uischema, schema) => {
-  return (
-    scopeEndIs("/properties/$value") &&
-    schema.properties?.$type?.const === "color"
-  );
+  return scopeEndIs("/properties/$value") && schema.properties?.$type?.const === "color";
 });

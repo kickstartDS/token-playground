@@ -20,10 +20,7 @@ export interface UseFetchReturn<T> extends UseFetchState<T> {
   reset: () => void;
 }
 
-export function useFetch<T = any>(
-  url?: string,
-  options: UseFetchOptions = {},
-): UseFetchReturn<T> {
+export function useFetch<T = any>(url?: string, options: UseFetchOptions = {}): UseFetchReturn<T> {
   const [state, setState] = useState<UseFetchState<T>>({
     data: null,
     loading: false,
@@ -39,10 +36,7 @@ export function useFetch<T = any>(
   }, [options]);
 
   const execute = useCallback(
-    async (
-      executeUrl?: string,
-      executeOptions?: RequestInit,
-    ): Promise<T | null> => {
+    async (executeUrl?: string, executeOptions?: RequestInit): Promise<T | null> => {
       const targetUrl = executeUrl || url;
 
       if (!targetUrl) {
@@ -63,8 +57,7 @@ export function useFetch<T = any>(
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
       try {
-        const { immediate, onSuccess, onError, ...fetchOptions } =
-          optionsRef.current;
+        const { immediate, onSuccess, onError, ...fetchOptions } = optionsRef.current;
 
         const response = await fetch(targetUrl, {
           ...fetchOptions,
@@ -150,9 +143,6 @@ export function usePut<T = any>(url?: string, options: UseFetchOptions = {}) {
   return useFetch<T>(url, { ...options, method: "PUT" });
 }
 
-export function useDelete<T = any>(
-  url?: string,
-  options: UseFetchOptions = {},
-) {
+export function useDelete<T = any>(url?: string, options: UseFetchOptions = {}) {
   return useFetch<T>(url, { ...options, method: "DELETE" });
 }

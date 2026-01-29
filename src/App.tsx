@@ -1,16 +1,16 @@
-import { useState } from "react";
-import classNames from "classnames";
-import Box from "@mui/material/Box";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import ToggleButton from "@mui/material/ToggleButton";
 import DoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import DoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import { Preview } from "./preview/Preview";
+import Box from "@mui/material/Box";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import classNames from "classnames";
+import { useState } from "react";
 import { Editor } from "./editor/Editor";
 import { PresetContextProvider } from "./presets/PresetContext";
+import { Preview } from "./preview/Preview";
 import { TokenContextProvider } from "./token/TokenContext";
-import { useMatchMediaQuery } from "./utils/useMatchMediaQuery";
 import { SearchParamsProvider } from "./utils/router";
+import { useMatchMediaQuery } from "./utils/useMatchMediaQuery";
 import "./App.scss";
 
 export const App = () => {
@@ -47,11 +47,7 @@ export const App = () => {
                   aria-label={(showEditor ? "hide" : "show") + " editor"}
                   title={(showEditor ? "hide" : "show") + " editor"}
                 >
-                  {showEditor ? (
-                    <DoubleArrowLeftIcon />
-                  ) : (
-                    <DoubleArrowRightIcon />
-                  )}
+                  {showEditor ? <DoubleArrowLeftIcon /> : <DoubleArrowRightIcon />}
                 </ToggleButton>
               </ToggleButtonGroup>
               <Preview />

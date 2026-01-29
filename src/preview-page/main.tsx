@@ -1,3 +1,5 @@
+import { PageWrapper } from "@kickstartds/ds-agency-premium/page-wrapper";
+import Providers from "@kickstartds/ds-agency-premium/providers";
 import React, {
   FunctionComponent,
   lazy,
@@ -9,8 +11,6 @@ import React, {
   useState,
 } from "react";
 import ReactDOM from "react-dom/client";
-import { PageWrapper } from "@kickstartds/ds-agency-premium/page-wrapper";
-import Providers from "@kickstartds/ds-agency-premium/providers";
 import "@kickstartds/ds-agency-premium/global.client.js";
 import "@kickstartds/ds-agency-premium/global.css";
 
@@ -56,32 +56,18 @@ window.addEventListener("storage", updateTokens);
 updateTokens();
 
 const pages: Record<string, LazyExoticComponent<FunctionComponent>> = {
-  "color-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/color-demo"),
-  ),
-  "font-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/font-demo"),
-  ),
-  "spacing-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/spacing-demo"),
-  ),
-  "border-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/border-demo"),
-  ),
-  "shadow-demo": lazy(
-    () => import("@kickstartds/ds-agency-premium/playground/shadow-demo"),
-  ),
+  "color-demo": lazy(() => import("@kickstartds/ds-agency-premium/playground/color-demo")),
+  "font-demo": lazy(() => import("@kickstartds/ds-agency-premium/playground/font-demo")),
+  "spacing-demo": lazy(() => import("@kickstartds/ds-agency-premium/playground/spacing-demo")),
+  "border-demo": lazy(() => import("@kickstartds/ds-agency-premium/playground/border-demo")),
+  "shadow-demo": lazy(() => import("@kickstartds/ds-agency-premium/playground/shadow-demo")),
   "transition-demo": lazy(
     () => import("@kickstartds/ds-agency-premium/playground/transition-demo"),
   ),
-  landingpage: lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/landingpage"),
-  ),
+  landingpage: lazy(() => import("@kickstartds/ds-agency-premium/pages/landingpage")),
   about: lazy(() => import("@kickstartds/ds-agency-premium/pages/about")),
   jobs: lazy(() => import("@kickstartds/ds-agency-premium/pages/jobs")),
-  "jobs-detail": lazy(
-    () => import("@kickstartds/ds-agency-premium/pages/jobs-detail"),
-  ),
+  "jobs-detail": lazy(() => import("@kickstartds/ds-agency-premium/pages/jobs-detail")),
   overview: lazy(() => import("@kickstartds/ds-agency-premium/pages/overview")),
 };
 
@@ -104,13 +90,9 @@ const Demo = () => {
     const params = new URLSearchParams(query);
     const inverted = params.get("inverted");
     if (inverted === "1") {
-      document.documentElement
-        .querySelector("#root")
-        ?.setAttribute("ks-inverted", "true");
+      document.documentElement.querySelector("#root")?.setAttribute("ks-inverted", "true");
     } else {
-      document.documentElement
-        .querySelector("#root")
-        ?.removeAttribute("ks-inverted");
+      document.documentElement.querySelector("#root")?.removeAttribute("ks-inverted");
     }
   }, []);
 

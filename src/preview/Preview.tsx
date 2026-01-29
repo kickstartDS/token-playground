@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Box from "@mui/material/Box";
-import { Select } from "../controls/select/Select";
-import "./Preview.scss";
-import { useSearchParams } from "../utils/router";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import { useEffect, useMemo, useState } from "react";
+import "./Preview.scss";
+import { Select } from "../controls/select/Select";
+import { useSearchParams } from "../utils/router";
 
 const widths = ["100%", "400px", "800px"];
 const pages = [
@@ -76,12 +76,7 @@ export const Preview = () => {
     <div className="preview">
       <AppBar position="static" className="preview__toolbar">
         <Toolbar variant="dense">
-          <Select
-            options={pages}
-            value={page}
-            onChange={setPage}
-            label="preview"
-          />
+          <Select options={pages} value={page} onChange={setPage} label="preview" />
           <Select
             options={widths.map((w) => ({ value: w, label: w }))}
             value={width}
@@ -90,26 +85,15 @@ export const Preview = () => {
           />
           <FormControlLabel
             control={
-              <Checkbox
-                checked={inverted}
-                onChange={(e) => setInverted(e.target.checked)}
-              />
+              <Checkbox checked={inverted} onChange={(e) => setInverted(e.target.checked)} />
             }
             label="Inverted?"
           />
         </Toolbar>
       </AppBar>
       <Box className="preview__content">
-        <Box
-          className="preview__iframe-container"
-          sx={{ backgroundColor: "grey.200" }}
-        >
-          <iframe
-            className="preview__iframe"
-            src={iframeSrc}
-            title="Preview"
-            style={{ width }}
-          />
+        <Box className="preview__iframe-container" sx={{ backgroundColor: "grey.200" }}>
+          <iframe className="preview__iframe" src={iframeSrc} title="Preview" style={{ width }} />
         </Box>
       </Box>
     </div>

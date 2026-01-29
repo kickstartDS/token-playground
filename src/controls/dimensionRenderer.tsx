@@ -1,6 +1,6 @@
 import { ControlProps, rankWith, scopeEndIs } from "@jsonforms/core";
-import { withJsonFormsControlProps } from "@jsonforms/react";
 import { Unwrapped } from "@jsonforms/material-renderers";
+import { withJsonFormsControlProps } from "@jsonforms/react";
 
 const { MaterialIntegerControl } = Unwrapped;
 
@@ -21,8 +21,5 @@ export const renderer = withJsonFormsControlProps((props: ControlProps) => {
 });
 
 export const tester = rankWith(3, (uischema, schema) => {
-  return (
-    scopeEndIs("/properties/$value") &&
-    schema.properties?.$type?.const === "dimension"
-  );
+  return scopeEndIs("/properties/$value") && schema.properties?.$type?.const === "dimension";
 });

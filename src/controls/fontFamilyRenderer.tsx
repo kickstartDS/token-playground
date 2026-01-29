@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
-import Autocomplete from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
-import FormHelperText from "@mui/material/FormHelperText";
 import { isDescriptionHidden, rankWith, scopeEndIs } from "@jsonforms/core";
 import { useFocus } from "@jsonforms/material-renderers";
-import {
-  withJsonFormsControlProps,
-  withTranslateProps,
-} from "@jsonforms/react";
+import { withJsonFormsControlProps, withTranslateProps } from "@jsonforms/react";
+import Autocomplete from "@mui/material/Autocomplete";
+import FormHelperText from "@mui/material/FormHelperText";
+import TextField from "@mui/material/TextField";
+import { useEffect, useState } from "react";
 import fontList from "../fonts.json";
 
 const fonts = new Set(fontList);
@@ -18,35 +15,16 @@ const options = fontList;
  */
 export const renderer = withJsonFormsControlProps(
   withTranslateProps((props) => {
-    const {
-      description,
-      errors,
-      visible,
-      required,
-      label,
-      data,
-      id,
-      enabled,
-      path,
-      handleChange,
-    } = props;
+    const { description, errors, visible, required, label, data, id, enabled, path, handleChange } =
+      props;
     const isValid = errors.length === 0;
     const value = data?.$value?.join(", ");
     const [inputValue, setInputValue] = useState(value ?? "");
     const [focused, onFocus, onBlur] = useFocus();
 
-    const showDescription = !isDescriptionHidden(
-      visible,
-      description,
-      focused,
-      false,
-    );
+    const showDescription = !isDescriptionHidden(visible, description, focused, false);
 
-    const firstFormHelperText = showDescription
-      ? description
-      : !isValid
-        ? errors
-        : null;
+    const firstFormHelperText = showDescription ? description : !isValid ? errors : null;
     const secondFormHelperText = showDescription && !isValid ? errors : null;
 
     useEffect(() => {
@@ -101,9 +79,7 @@ export const renderer = withJsonFormsControlProps(
             );
           }}
         />
-        <FormHelperText error={!isValid && !showDescription}>
-          {firstFormHelperText}
-        </FormHelperText>
+        <FormHelperText error={!isValid && !showDescription}>{firstFormHelperText}</FormHelperText>
         <FormHelperText error={!isValid}>{secondFormHelperText}</FormHelperText>
       </>
     );
@@ -111,8 +87,5 @@ export const renderer = withJsonFormsControlProps(
 );
 
 export const tester = rankWith(3, (uischema, schema) => {
-  return (
-    scopeEndIs("/properties/$value") &&
-    schema.properties?.$type?.const === "fontFamily"
-  );
+  return scopeEndIs("/properties/$value") && schema.properties?.$type?.const === "fontFamily";
 });

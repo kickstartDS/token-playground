@@ -1,13 +1,13 @@
-import { FormEvent, useId, useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import Button from "@mui/material/Button";
-import DialogActions from "@mui/material/DialogActions";
-import DataObjectIcon from "@mui/icons-material/DataObject";
-import TextField from "@mui/material/TextField";
 import { validate } from "@kickstartds/ds-agency-premium/tokens/branding-tokens.schema.validate.mjs";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+import TextField from "@mui/material/TextField";
+import { FormEvent, useId, useState } from "react";
 import { useToken } from "../../token/TokenContext";
 
 export const Code = () => {

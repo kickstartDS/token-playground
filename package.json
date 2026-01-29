@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc && rm -rf dist && vite build",
-    "format": "prettier . --write --list-different",
+    "format": "oxfmt",
     "preview": "vite preview",
     "start": "vite"
   },
@@ -39,7 +39,7 @@
     "@types/tinycolor2": "^1.4.3",
     "@types/traverse": "^0.6.37",
     "@vitejs/plugin-react": "^5.1.2",
-    "prettier": "^3.7.4",
+    "oxfmt": "^0.27.0",
     "typescript": "^5.9.3",
     "vite": "^7.2.7"
   }

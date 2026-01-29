@@ -1,3 +1,5 @@
+import initialTokens from "@kickstartds/ds-agency-premium/tokens/branding-tokens.json";
+import { tokensToCss } from "@kickstartds/ds-agency-premium/tokens/tokensToCss.mjs";
 import {
   createContext,
   Dispatch,
@@ -8,10 +10,8 @@ import {
   useEffect,
   useMemo,
 } from "react";
-import { tokensToCss } from "@kickstartds/ds-agency-premium/tokens/tokensToCss.mjs";
-import initialTokens from "@kickstartds/ds-agency-premium/tokens/branding-tokens.json";
-import { useLocalStorage } from "../utils/useLocalStorage";
 import { usePreset } from "../presets/PresetContext";
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 export interface ITokenContext {
   setTokens: Dispatch<SetStateAction<any>>;

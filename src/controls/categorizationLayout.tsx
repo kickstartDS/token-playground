@@ -22,10 +22,6 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
 */
-import { useState, useMemo, useEffect } from "react";
-import AppBar from "@mui/material/AppBar";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import {
   and,
   Categorization,
@@ -39,16 +35,16 @@ import {
   uiTypeIs,
 } from "@jsonforms/core";
 import {
-  TranslateProps,
-  withJsonFormsLayoutProps,
-  withTranslateProps,
-} from "@jsonforms/react";
-import {
   AjvProps,
   MaterialLayoutRenderer,
   MaterialLayoutRendererProps,
   withAjvProps,
 } from "@jsonforms/material-renderers";
+import { TranslateProps, withJsonFormsLayoutProps, withTranslateProps } from "@jsonforms/react";
+import AppBar from "@mui/material/AppBar";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "../utils/router";
 
 const isSingleLevelCategorization: Tester = and(
@@ -58,10 +54,7 @@ const isSingleLevelCategorization: Tester = and(
 
     return (
       categorization.elements &&
-      categorization.elements.reduce(
-        (acc, e) => acc && e.type === "Category",
-        true,
-      )
+      categorization.elements.reduce((acc, e) => acc && e.type === "Category", true)
     );
   },
 );
@@ -99,12 +92,11 @@ export const MaterialCategorizationLayoutRenderer = (
     t,
   } = props;
   const categorization = uischema as Categorization;
-  const [previousCategorization, setPreviousCategorization] =
-    useState<Categorization>(uischema as Categorization);
+  const [previousCategorization, setPreviousCategorization] = useState<Categorization>(
+    uischema as Categorization,
+  );
   const searchParamValue = searchParams.get(uischema.options?.searchParam);
-  const initalCategory = searchParamValue
-    ? Number(searchParamValue)
-    : (selected ?? 0);
+  const initalCategory = searchParamValue ? Number(searchParamValue) : (selected ?? 0);
   const [activeCategory, setActiveCategory] = useState<number>(initalCategory);
   const categories = useMemo(
     () =>
@@ -131,8 +123,7 @@ export const MaterialCategorizationLayoutRenderer = (
     setPreviousCategorization(categorization);
   }
 
-  const safeCategory =
-    activeCategory >= categorization.elements.length ? 0 : activeCategory;
+  const safeCategory = activeCategory >= categorization.elements.length ? 0 : activeCategory;
 
   const childProps: MaterialLayoutRendererProps = {
     elements: categories[safeCategory] ? categories[safeCategory].elements : [],
@@ -182,7 +173,5 @@ export const MaterialCategorizationLayoutRenderer = (
 };
 
 export const renderer = withAjvProps(
-  withTranslateProps(
-    withJsonFormsLayoutProps(MaterialCategorizationLayoutRenderer),
-  ),
+  withTranslateProps(withJsonFormsLayoutProps(MaterialCategorizationLayoutRenderer)),
 );

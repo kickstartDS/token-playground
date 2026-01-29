@@ -1,6 +1,6 @@
 import type { Context, Config } from "@netlify/functions";
-import { getStore } from "@netlify/blobs";
 import { validate } from "@kickstartds/ds-agency-premium/tokens/branding-tokens.schema.validate.mjs";
+import { getStore } from "@netlify/blobs";
 
 const STORE_NAME = "tokens";
 
@@ -48,10 +48,7 @@ export default async (req: Request, context: Context) => {
         try {
           body = await req.json();
         } catch (e) {
-          return res(
-            422,
-            e instanceof Error ? e.message : "Missing or Invalid Data",
-          );
+          return res(422, e instanceof Error ? e.message : "Missing or Invalid Data");
         }
         if (!validate(body)) {
           console.error(validate.errors);
@@ -74,8 +71,7 @@ export default async (req: Request, context: Context) => {
     }
   } catch (error) {
     console.error(error);
-    const errorMsg =
-      error instanceof Error ? error.message : "Internal Server Error";
+    const errorMsg = error instanceof Error ? error.message : "Internal Server Error";
     return res(500, errorMsg);
   }
 };

@@ -1,20 +1,17 @@
-import { JsonForms } from "@jsonforms/react";
-import {
-  materialCells,
-  materialRenderers,
-} from "@jsonforms/material-renderers";
 import { createAjv } from "@jsonforms/core";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import * as colorRenderer from "../controls/colorRenderer";
-import * as numberRenderer from "../controls/numberRenderer";
-import * as fontFamilyRenderer from "../controls/fontFamilyRenderer";
-import * as dimensionRenderer from "../controls/dimensionRenderer";
-import * as fontWeightRenderer from "../controls/fontWeightRenderer";
-import * as categorizationLayout from "../controls/categorizationLayout";
-import { useToken } from "../token/TokenContext";
+import { materialCells, materialRenderers } from "@jsonforms/material-renderers";
+import { JsonForms } from "@jsonforms/react";
 import tokenSchema from "@kickstartds/ds-agency-premium/tokens/branding-tokens.schema.dereffed.json";
-import { uischema } from "./uiSchema";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import * as categorizationLayout from "../controls/categorizationLayout";
+import * as colorRenderer from "../controls/colorRenderer";
+import * as dimensionRenderer from "../controls/dimensionRenderer";
+import * as fontFamilyRenderer from "../controls/fontFamilyRenderer";
+import * as fontWeightRenderer from "../controls/fontWeightRenderer";
+import * as numberRenderer from "../controls/numberRenderer";
+import { useToken } from "../token/TokenContext";
 import { EditorToolbar } from "./Toolbar";
+import { uischema } from "./uiSchema";
 
 const schema = { type: "object", properties: tokenSchema.properties };
 const ajv = createAjv({ useDefaults: true });

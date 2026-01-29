@@ -1,11 +1,4 @@
-import {
-  createContext,
-  FC,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, FC, PropsWithChildren, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "../utils/router";
 import { useGet, usePut } from "../utils/useFetch";
 
@@ -45,9 +38,7 @@ export const PresetContextProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (presetName) {
-      getPreset(`/api/tokens/${presetName}`).catch(() =>
-        searchParams.delete("t", undefined, true),
-      );
+      getPreset(`/api/tokens/${presetName}`).catch(() => searchParams.delete("t", undefined, true));
     }
   }, [presetName]);
 

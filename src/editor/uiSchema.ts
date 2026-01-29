@@ -40,9 +40,7 @@ export const uischema = {
                 type: "HorizontalLayout",
                 elements: [1, 2, 3].map((col) => ({
                   type: "Control",
-                  scope: `#/properties/color/properties/scale/properties/${
-                    row + col
-                  }`,
+                  scope: `#/properties/color/properties/scale/properties/${row + col}`,
                 })),
               })),
             },
@@ -88,12 +86,10 @@ export const uischema = {
             {
               type: "Category",
               label: "Weight",
-              elements: ["light", "regular", "medium", "semi-bold", "bold"].map(
-                (name) => ({
-                  type: "Control",
-                  scope: `#/properties/font/properties/weight/properties/${name}`,
-                }),
-              ),
+              elements: ["light", "regular", "medium", "semi-bold", "bold"].map((name) => ({
+                type: "Control",
+                scope: `#/properties/font/properties/weight/properties/${name}`,
+              })),
             },
           ],
         },
