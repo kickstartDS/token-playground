@@ -11,6 +11,9 @@ export const renderer = withJsonFormsControlProps((props: ControlProps) => {
   const Control = shouldRenderSlider
     ? MaterialSliderControl
     : MaterialNumberControl;
+  if (shouldRenderSlider) {
+    valueSchema.multipleOf = 0.01;
+  }
   return (
     <Control
       {...props}
